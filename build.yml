@@ -1,0 +1,23 @@
+---
+# This playbook deploys the whole application stack in this site.  
+
+- name: apply common configuration to all nodes
+  hosts: all
+  user: root
+
+  roles:
+    - common
+
+- name: configure and deploy the webservers and application code
+  hosts: drupal8
+  user: root
+
+  roles:
+    - httpd
+
+- name: deploy MySQL and configure the databases
+  hosts: drupal8
+  user: root
+
+  roles:
+    - db

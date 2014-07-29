@@ -1,0 +1,15 @@
+---
+# These tasks install the php modules.
+
+- name: Install php
+  yum: name={{ item }} state=present
+  with_items:
+   - php
+   - php-mysql
+   - php-gd
+   - php-mbstring
+   - php-curl
+   - php-common
+
+- name: http service state
+  service: name=httpd state=restarted enabled=yes

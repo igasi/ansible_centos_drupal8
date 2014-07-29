@@ -1,0 +1,50 @@
+---
+- name: Installing Ansible Dependencies
+  yum: name={{ item }} state=present
+  with_items:
+  - python-pycurl
+  - python-yum
+  - python-mysqldb
+
+
+- name: Installing Common Pacakges
+  yum: name={{ item }} state=present
+  tags: common
+  with_items:
+  - git
+  - unzip
+  - ack-grep
+  - lzop
+  - vim
+  - tree
+  - sendmail
+  - ansible
+  - curl
+
+##
+## Message of the day explaining server is under control of Ansible.
+##
+- name: Message of the day explaining server is under Ansible control.
+  action: copy src=etc-update-motd-d-95-ansible dest=/etc/update-motd.d/95-ansible mode=755
+  tags: common
+
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: Install ntp 
+  yum: name=ntp state=present
+  tags: ntp
+
+- name: Configure ntp file
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  tags: ntp
+  notify: restart ntp
+
+- name: Start the ntp service
+  service: name=ntpd state=started enabled=true
+  tags: ntp
+
+- name: test to see if selinux is running
+  command: getenforce
+  register: sestatus
+  changed_when: false
