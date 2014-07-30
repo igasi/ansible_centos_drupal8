@@ -5,9 +5,9 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
 
 ##Requirements
 
-Docker
-Ansibles
-SSH client
+ - Docker (last version for your SO)
+ - Ansible (last version)
+ - SSH client
 
 ##Features
 
@@ -43,8 +43,8 @@ docker build -t base .
 #Check image base creation
 docker images base
 
-# Run a container specific for project
-docker run -d -t -P --name «project_name» base
+# Run a container specific for project with share code
+docker run -d -t -P -v /path/to/code/project:/var/www/html:ro|rw --name «project_name» base
 
 # Check ssh conection
 docker ps
