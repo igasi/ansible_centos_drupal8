@@ -14,8 +14,7 @@ RUN yum install -y sudo screen
 RUN yum -y install openssh-server openssh-clients
 
 #
-# Setup a root password; simple enough to remember, but hard enough that
-# it won't be cracked immediately.  (ha!)
+# Setup a root password
 #
 RUN echo "root:root" | chpasswd
 
@@ -25,8 +24,11 @@ RUN echo "root:root" | chpasswd
 EXPOSE 80
 EXPOSE 22
 
+#
+# Enable ssh service and aothorized keys
+#
 CMD    ["/usr/sbin/sshd", "-D"]
 RUN service sshd start
 
-ADD files/authorized_keys /root/.ssh/authorized_keys
+ADD files/authorized_keys /root/.ssh/authorized_keys && restorecon -R -v /root/.ssh
 
