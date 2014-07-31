@@ -30,5 +30,6 @@ EXPOSE 22
 CMD    ["/usr/sbin/sshd", "-D"]
 RUN service sshd start
 
-ADD files/authorized_keys /root/.ssh/authorized_keys && restorecon -R -v /root/.ssh
+ADD files/authorized_keys /root/.ssh/authorized_keys 
+RUN chmod 700 /root/.ssh && chmod 600 /root/.ssh/authorized_keys && restorecon -R -v /root/.ssh
 

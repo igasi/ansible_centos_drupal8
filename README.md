@@ -55,7 +55,7 @@ ssh root@«IPAddress»
 exit
 
 # Configure hosts
-«IPAddress» >> hosts
+echo «IPAddress» >> hosts
 
 # Run ansible
 ansible-playbook build.yml -i hosts
