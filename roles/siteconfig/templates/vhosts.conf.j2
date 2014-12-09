@@ -1,0 +1,17 @@
+# project_name HTTP Virtual Host
+<VirtualHost *:80>
+ # General
+ ServerAdmin isaac.gasi@gmail.com
+ DocumentRoot /var/www/html/DrupalApp
+ ServerName www.project_name.dev
+ ServerAlias project_name.dev
+
+ # Logging
+ ErrorLog logs/project_name-error_log
+ CustomLog logs/project_name-access_log common
+
+ #Clean URL
+ <Directory /var/www/html/DrupalApp>
+   AllowOverride All
+ </Directory>
+</VirtualHost>

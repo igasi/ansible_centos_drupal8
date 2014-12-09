@@ -23,3 +23,11 @@
 
   roles:
     - db
+
+- name: Configure front end tools
+  hosts: drupal8
+  user: root
+
+  roles:
+    - rvm_io.rvm1-ruby
+    - frontendtools

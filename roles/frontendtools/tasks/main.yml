@@ -1,0 +1,8 @@
+---
+- name: Update gems
+  shell: gem update --system
+  tags: ruby
+
+- name: Install compass
+  shell: gem install compass
+  tags: ruby

@@ -16,4 +16,6 @@
   - tree
   - sendmail
   - curl
+  - tar
+  - wget
 

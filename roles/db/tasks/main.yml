@@ -1,7 +1,7 @@
 ---
 # This playbook will install mysql and create db user and give permissions.
 
-- name: Install Mysql package
+- name: Install MariaDB (Mysql) package
   yum: name={{ item }} state=installed
   with_items:
    - mysql-server

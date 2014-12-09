@@ -9,7 +9,7 @@
   tags: php
 
 - name: Cloning/Updating Drush repo
-  git: repo=git://github.com/drush-ops/drush.git
+  git: repo=https://github.com/drush-ops/drush.git
        dest=/usr/local/lib/drush
        version=master
        update=yes
@@ -27,3 +27,12 @@
   command: composer install chdir=/usr/local/lib/drush
   tags: php
 
+#- name: Configure path Composer
+#  sudo: no
+#  shell: export PATH="$HOME/.composer/vendor/bin:$PATH" && source /etc/bashrc
+#  tags: php
+
+#- name: Install Drush via Composer
+#  sudo: no
+#  shell: composer global require drush/drush:dev-master
+#  tags: php

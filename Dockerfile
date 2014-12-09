@@ -1,6 +1,6 @@
 # Docker image for manage with ansible
 
-FROM centos:centos6
+FROM insaneworks/centos:latest
 MAINTAINER Isaac Gasi <isaac.gasi@gmail.com>
 
 #

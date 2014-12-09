@@ -12,7 +12,7 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
 ##Features
 
 ### Dockerfile
- - Centos 6.5
+ - Centos 6.6
  - SSH deamon
 
 ### Ansible
@@ -23,7 +23,12 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
  - drush
  - vim
  - git
+ - wget
+ - tar
+ - curl
  - add autorized keys
+ - ruby
+ - compass
 
 ##Use
 
@@ -56,6 +61,10 @@ exit
 
 # Configure hosts
 echo «IPAddress» >> hosts
+
+# Get roles from ansible galaxy
+ansible-galaxy install -p roles/ rvm_io.rvm1-ruby
+
 
 # Run ansible
 ansible-playbook build.yml -i hosts
