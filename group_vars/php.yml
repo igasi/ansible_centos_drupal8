@@ -1,0 +1,27 @@
+php_memory_limit: "256M"
+php_max_execution_time: "60"
+php_realpath_cache_size: "32K"
+php_upload_max_filesize: "64M"
+php_date_timezone: "America/Chicago"
+php_sendmail_path: "/usr/sbin/sendmail -t -i"
+php_short_open_tag: false
+php_error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT"
+php_display_errors: "On"
+php_enable_apc: true
+php_apc_enabled_in_ini: true
+php_apc_cache_by_default: "1"
+php_apc_shm_size: "96M"
+php_packages:
+  - php
+  - php-cli
+  - php-common
+  - php-devel
+  - php-gd
+  - php-mbstring
+  - php-pdo
+  - php-pecl-apc
+  - php-xml
+  - php-mcrypt
+  - php-dom
+  - php-curl
+  - php-mysql

@@ -8,13 +8,21 @@
   roles:
     - common
 
-- name: configure and deploy the webservers and application code
+- name: Install htpd or apache
   hosts: drupal8
   user: root
 
   roles:
     - httpd
-    - php
+
+- name: Install php and devtools
+  hosts: drupal8
+  user: root
+  vars_files:
+    - group_vars/php.yml
+  roles:
+    - ansible-role-php
+  #  - php55w
     - devtools
 
 - name: deploy MySQL and configure the databases
@@ -31,3 +39,10 @@
   roles:
     - rvm_io.rvm1-ruby
     - frontendtools
+
+- name: Configure site
+  hosts: drupal8
+  user: root
+
+  roles:
+    - siteconfig

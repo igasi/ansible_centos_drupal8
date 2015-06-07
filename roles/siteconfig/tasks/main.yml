@@ -3,8 +3,7 @@
 
 - name: Create Vhosts configuration file
   template: src=vhosts.conf.j2 dest=/etc/httpd/conf.d/project.conf
-  notify: 
-  - restart httpd
+
 
 - name: Restart httpd Service
   service: name=httpd state=started enabled=true

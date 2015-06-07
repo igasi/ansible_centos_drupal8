@@ -10,29 +10,15 @@
 
 - name: Cloning/Updating Drush repo
   git: repo=https://github.com/drush-ops/drush.git
-       dest=/usr/local/lib/drush
-       version=master
+       dest=/usr/local/src/drush
+       version=7.0.0-alpha5
        update=yes
   tags: php
 
-- name: Making Drush executable
-  file: path=/usr/local/lib/drush/drush mode=755
-  tags: php
-
 - name: Symlinking Drush
-  file: src=/usr/local/lib/drush/drush dest=/usr/local/bin/drush state=link mode=755
+  file: src=/usr/local/src/drush/drush dest=/usr/bin/drush state=link mode=755
   tags: php
 
-- name: Installing Drush dependencies
+- name: Installing Drush dependencies with composer
   command: composer install chdir=/usr/local/lib/drush
   tags: php
-
-#- name: Configure path Composer
-#  sudo: no
-#  shell: export PATH="$HOME/.composer/vendor/bin:$PATH" && source /etc/bashrc
-#  tags: php
-
-#- name: Install Drush via Composer
-#  sudo: no
-#  shell: composer global require drush/drush:dev-master
-#  tags: php

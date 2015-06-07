@@ -17,7 +17,7 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
 
 ### Ansible
  - httpd
- - php5.5
+ - php5.3 stable/php5.5 unstable
  - mysql
  - composer
  - drush
@@ -64,7 +64,9 @@ echo «IPAddress» >> hosts
 
 # Get roles from ansible galaxy
 ansible-galaxy install -p roles/ rvm_io.rvm1-ruby
+git clone git@github.com:geerlingguy/ansible-role-php.git roles/ansible-role-php
 
+#Note: Please review  build.yml for select version of php
 
 # Run ansible
 ansible-playbook build.yml -i hosts
