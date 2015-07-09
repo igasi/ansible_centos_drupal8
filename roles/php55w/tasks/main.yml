@@ -17,6 +17,7 @@
    - php55w-mcrypt
    - php55w-pdo
    - php55w-pecl-xdebug
+   - php55w-posix
 
 - name: http service state
   service: name=httpd state=restarted enabled=yes

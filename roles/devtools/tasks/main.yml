@@ -11,7 +11,7 @@
 - name: Cloning/Updating Drush repo
   git: repo=https://github.com/drush-ops/drush.git
        dest=/usr/local/src/drush
-       version=7.0.0-alpha5
+       version=master
        update=yes
   tags: php
 
@@ -20,5 +20,5 @@
   tags: php
 
 - name: Installing Drush dependencies with composer
-  command: composer install chdir=/usr/local/lib/drush
+  command: composer install chdir=/usr/local/src/drush
   tags: php
