@@ -43,7 +43,7 @@ cat ~/.ssh/id_rsa.pub >> files/authorized_keys
 
 # Build a docker image base
 cd docker/tutum-centos && docker build -t tutum/centos:centos7 centos7
-docker run -d -p 2222:22 -e AUTHORIZED_KEYS="`cat ~/.ssh/id_rsa.pub`" -P -v /path/to/code/project:/var/www/html:rw --name «project_name» tutum/centos
+docker run -d -p 2222:22 -P -v /path/to/code/project:/var/www/html:rw --name «project_name» tutum/centos
 cd ../..
 
 # Check ssh conection

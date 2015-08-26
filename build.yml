@@ -21,8 +21,8 @@
   vars_files:
     - group_vars/php.yml
   roles:
-  #  - ansible-role-php
-    - php55w
+    - ansible-role-php
+  #  - php55w
     - devtools
 
 - name: deploy MySQL and configure the databases
