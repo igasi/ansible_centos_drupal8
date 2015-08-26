@@ -42,14 +42,9 @@ cp files/example_authorized_keys files/authorized_keys
 cat ~/.ssh/id_rsa.pub >> files/authorized_keys
 
 # Build a docker image base
-docker pull centos
-docker build -t base .
-
-#Check image base creation
-docker images base
-
-# Run a container specific for project with share code
-docker run -d -t -P -v /path/to/code/project:/var/www/html:ro|rw --name «project_name» base
+cd docker/tutum-centos && docker build -t tutum/centos:centos7 centos7
+docker run -d -p 2222:22 -e AUTHORIZED_KEYS="`cat ~/.ssh/id_rsa.pub`" -P -v /path/to/code/project:/var/www/html:rw --name «project_name» tutum/centos
+cd ../..
 
 # Check ssh conection
 docker ps
@@ -63,8 +58,8 @@ exit
 echo «IPAddress» >> hosts
 
 # Get roles from ansible galaxy
-ansible-galaxy install -p roles/ rvm_io.rvm1-ruby
-git clone git@github.com:geerlingguy/ansible-role-php.git roles/ansible-role-php
+# ansible-galaxy install -p roles/ rvm_io.rvm1-ruby
+# git clone git@github.com:geerlingguy/ansible-role-php.git roles/ansible-role-php
 
 #Note: Please review  build.yml for select version of php
 
