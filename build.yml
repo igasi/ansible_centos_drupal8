@@ -1,5 +1,5 @@
 ---
-# This playbook deploys the whole application stack in this site.  
+ This playbook deploys the whole application stack in this site.
 
 - name: apply common configuration to all nodes
   hosts: all
@@ -8,7 +8,7 @@
   roles:
     - common
 
-- name: Install htpd or apache
+- name: Install httpd or apache
   hosts: drupal8
   user: root
 
@@ -22,7 +22,7 @@
     - group_vars/php.yml
   roles:
   #  - ansible-role-php
-    - php55w
+    - php56w
     - devtools
 
 - name: deploy MySQL and configure the databases

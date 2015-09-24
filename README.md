@@ -3,22 +3,22 @@ Ansible for building centos lamp optimization to Drupal8
 
 Create a Docker containers in base a Image pre-configured with centos,  and use Ansible for Application Deployment + Configuration Management + Continuous Delivery.
 
-##Requirements
+## Requirements
 
  - Docker (last version for your SO)
  - Ansible (last version)
  - SSH client
 
-##Features
+## Features
 
 ### Dockerfile
- - Centos 6.6
+ - Centos 6.7
  - SSH deamon
 
 ### Ansible
  - httpd
- - php5.3 stable/php5.5 unstable
- - mysql
+ - php5.3 stable/php5.5 unstable/php5.6
+ - mysqld 5.5
  - composer
  - drush
  - vim
@@ -30,7 +30,15 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
  - ruby
  - compass
 
-##Use
+
+## use for run functional container
+```
+docker pull igasi/drupal8centos7base:latest
+docker run --privileged=true -d -t -P -v /path/to/code/project:/var/www/html:rw --name project_name igasi/drupal8centos67base:latest
+
+```
+
+## How to build docker container base
 
 ```
 # Clone repository
@@ -59,6 +67,10 @@ ssh root@«IPAddress»
 # Into container
 exit
 
+```
+
+## How to prepare docker container with ansible
+```
 # Configure hosts
 echo «IPAddress» >> hosts
 
@@ -66,17 +78,27 @@ echo «IPAddress» >> hosts
 ansible-galaxy install -p roles/ rvm_io.rvm1-ruby
 git clone git@github.com:geerlingguy/ansible-role-php.git roles/ansible-role-php
 
-#Note: Please review  build.yml for select version of php
+#Note: Please review  build.yml for select version of php or custom install
 
 # Run ansible
 ansible-playbook build.yml -i hosts
 
-
-##Enjoy !!
 ```
 
 
-##Info
+## How to generate a docker image from docker container
+
+```
+docker ps
+docker commit <exiting-container> <hub-user>/<repo-name>[:<tag>]
+```
+Note: The docker image is build based on existing container with current status
+
+
+
+
+## Info
 
  - Password for root is root
+ - mysql: db=drupal8 user=drupal8 pass=drupal8
  - Vefiry the last version of docker and ansible (posible troubles with backward versions in ssh)

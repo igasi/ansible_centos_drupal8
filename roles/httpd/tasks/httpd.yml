@@ -1,10 +1,19 @@
 ---
 # These tasks install http and the php modules.
 
-- name: Install http
-  yum: name={{ item }} state=present
-  with_items:
-   - httpd
+- name: Remi Dependency on CentOS 6 and Red Hat (RHEL) 6
+  shell: rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+  tags: httpd
+
+- name: CentOS 6 and Red Hat (RHEL) 6
+  shell: rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+  tags: httpd
+
+#- name: Install httpd
+#  yum: name={{ item }} enablerepo=remi state=present
+#  with_items:
+#   - httpd
+
 
 - name: http service state
   service: name=httpd state=started enabled=yes

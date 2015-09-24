@@ -1,12 +1,12 @@
 # Docker image for manage with ansible
 
-FROM insaneworks/centos:latest
+FROM centos:centos6
 MAINTAINER Isaac Gasi <isaac.gasi@gmail.com>
 
 #
 # Install utitiles
 #
-RUN yum install -y sudo screen 
+RUN yum update -y; yum install -y sudo screen
 
 #
 # Install SSH

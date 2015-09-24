@@ -1,0 +1,39 @@
+---
+# These tasks install the php modules.
+- name: Add repo php 5
+  shell: rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+  tags: php
+
+- name: Install php
+  yum: name={{ item }} enablerepo=remi state=present
+  with_items:
+   - php56w
+   - php56w-mysqlnd
+   - php56w-gd
+   - php56w-mbstring
+   - php56w-common
+   - php56w-dom
+   - php56w-mcrypt
+   - php56w-pdo
+   - php56w-pecl-xdebug
+   - php56w-xmlrpc
+   - php56w-xml
+   - php56w-opcache
+#   - php
+#   - php-mysqlnd
+#   - php-gd
+#   - php-mbstring
+#   - php-curl
+#   - php-common
+#   - php-dom
+#   - php-mcrypt
+#   - php-pdo
+#   - php-pecl-xdebug
+#   - php-posix
+#   - php-xmlrpc
+#   - php-xml
+#   - php-pear
+#   - php-opcache
+
+- name: http service state
+  service: name=httpd state=restarted enabled=yes
