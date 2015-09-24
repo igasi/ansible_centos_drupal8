@@ -15,12 +15,13 @@ Create a Docker containers in base a Image pre-configured with centos,  and use 
  - Centos 6.7
  - SSH deamon
 
-### Ansible
+### With Ansible
  - httpd
  - php5.3 stable/php5.5 unstable/php5.6
  - mysqld 5.5
  - composer
  - drush
+ - drupal console
  - vim
  - git
  - wget
